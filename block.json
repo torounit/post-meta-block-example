@@ -1,0 +1,13 @@
+{
+    "name": "post-meta-block-example/post-meta-block-example",
+    "title": "Custom Fields",
+    "category": "text",
+    "icon": "block-default",
+    "apiVersion": 2,
+    "attributes": {},
+    "supports": {
+        "multiple": false
+    },
+    "description": "Show custom field value",
+    "editorScript": "file:./build/index.js"
+}

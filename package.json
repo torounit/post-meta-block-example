@@ -1,0 +1,79 @@
+{
+    "name": "@torounit/post-meta-block-example",
+    "version": "0.0.3",
+    "description": "Custom field ui",
+    "author": "Hiroshi Urabe <mail@torounit.com> (https://torounit.com)",
+    "license": "GPL-2.0-or-later",
+    "keywords": [
+        "WordPress",
+        "editor"
+    ],
+    "homepage": "https://github.com/torounit/post-meta-block-example",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/torounit/post-meta-block-example.git"
+    },
+    "bugs": {
+        "url": "https://github.com/torounit/post-meta-block-example/issues"
+    },
+    "devDependencies": {
+        "@wordpress/browserslist-config": "^4.0.0",
+        "@wordpress/env": "^4.0.4",
+        "@wordpress/scripts": "^16.0.0",
+        "husky": "^6.0.0",
+        "lint-staged": "^11.0.0",
+        "prettier": "npm:wp-prettier@^2.2.1-beta-1"
+    },
+    "scripts": {
+        "env": "wp-env",
+        "start": "wp-scripts start",
+        "build": "NODE_ENV=production wp-scripts build",
+        "format": "wp-scripts format ./src",
+        "lint-php": "./vendor/bin/phpcs --standard=./.phpcs.xml.dist",
+        "lint-js": "wp-scripts lint-js ./src",
+        "lint-js:fix": "wp-scripts lint-js ./src --fix"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "release-it": {
+        "hooks": {
+            "before:bump": "bash ./bin/create-release.sh post-meta-block-example ${version}",
+            "after:bump": "bash ./bin/create-zip.sh post-meta-block-example",
+            "after:release": "bash ./bin/cleanup.sh post-meta-block-example"
+        },
+        "github": {
+            "release": true,
+            "assets": [
+                "post-meta-block-example.zip"
+            ]
+        },
+        "npm": {
+            "publish": false
+        }
+    },
+    "lint-staged": {
+        "packages/*/package.json": [
+            "wp-scripts lint-pkg-json"
+        ],
+        "{*.css,*.scss}": [
+            "npm run lint-style"
+        ],
+        "*.js": [
+            "npm run format",
+            "npm run lint-js"
+        ],
+        "*.php": [
+            "npm run lint-php"
+        ]
+    },
+    "dependencies": {
+        "@wordpress/block-editor": "^6.0.0",
+        "@wordpress/blocks": "^9.0.0",
+        "@wordpress/core-data": "^3.0.0",
+        "@wordpress/data": "^5.0.0",
+        "@wordpress/element": "^3.0.0"
+    }
+}
