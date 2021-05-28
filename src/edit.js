@@ -46,7 +46,6 @@ function Edit( { setAttributes, attributes } ) {
 			{ inspectorControls }
 			<div { ...blockProps }>
 				<TextControl
-					type={'email'}
 					placeholder={ 'Add value...' }
 					value={ meta[ metaKey ] }
 					onChange={ updateMetaValue }
