@@ -1,5 +1,4 @@
 import {
-	RichText,
 	useBlockProps,
 	InspectorControls,
 } from '@wordpress/block-editor';
@@ -11,7 +10,7 @@ import { useEffect } from '@wordpress/element';
 
 const metaKey = 'my_post_meta';
 
-function Edit( { setAttributes, attributes } ) {
+function Edit() {
 	const blockProps = useBlockProps();
 	const postType = useSelect(
 		( select ) => select( 'core/editor' ).getCurrentPostType(),
