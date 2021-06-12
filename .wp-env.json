@@ -1,11 +1,10 @@
 {
-    "core": "WordPress/Wordpress#5.7",
+    "core": "WordPress/Wordpress#master",
     "plugins": [
         "."
     ],
     "config": {
-        "WP_ENVIRONMENT_TYPE": "local",
-        "CUSTOM_FIELD_TOOLKIT_DEV": true
+        "WP_ENVIRONMENT_TYPE": "local"
     },
     "port": 30000,
     "testsPort": 30001
